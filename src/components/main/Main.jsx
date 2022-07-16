@@ -6,10 +6,10 @@ import MovieCard from "../moviecard/MovieCard";
 import ReactLoading from "../loading.gif/Loading";
 
 // 12703b02c36476b0b7413bc8dc2a926e
-
 const Main = () => {
-  const [movies, setMovies] = useState({});
+  const [movies, setMovies] = useState([]);
   const [load, setLoad] = useState(false);
+  const [query, setQuery] = useState("");
   const url =
     "https://api.themoviedb.org/3/discover/movie?api_key=12703b02c36476b0b7413bc8dc2a926e";
 
@@ -32,16 +32,30 @@ const Main = () => {
     return (
       <div>
         <ReactLoading type="spin" color="black" />
+        {/* <h1>Loading...</h1> */}
       </div>
     );
   }
+
+  const searchMovie = (e) => {
+    // console.log(e.target.value);
+    setQuery({ query: e.target.value });
+  };
+  const filteredMovies = movies.filter((movie) => {
+    return movie.title.toLowerCase().indexOf(query) !== -1;
+  });
+  console.log(movies);
   return (
     <div>
       <div className="search">
-        <Filter />
+        <Filter
+          movies={movies}
+          setMovies={setMovies}
+          searchMovie={searchMovie}
+        />
       </div>
       <div className="container">
-        <MovieCard movies={movies} setMovies={setMovies} />
+        <MovieCard movies={filteredMovies} setMovies={setMovies} />
       </div>
     </div>
   );

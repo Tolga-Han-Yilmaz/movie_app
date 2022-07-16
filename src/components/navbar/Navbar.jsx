@@ -1,20 +1,30 @@
-import React from "react";
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./navbar.css";
 
 const Navbar = () => {
+  const navigate = useNavigate();
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleClick = () => {
+    navigate("/");
+  };
   return (
     <nav className="navbar   d-flex justify-content-between p-3 navbar">
       <div className="container">
         <div>
-          <h3>React Movie App</h3>
+          <h3 onClick={handleClick}>React Movie App</h3>
         </div>
         <div>
-          <button type="button" className="btn btn-dark mx-3">
+          <Link to="/login" className="btn btn-dark mx-3">
             Login
-          </button>
-          <button type="button" className="btn btn-outline-dark">
+          </Link>
+          <Link to="/register" className="btn btn-outline-dark">
             Register
-          </button>
+          </Link>
         </div>
       </div>
     </nav>

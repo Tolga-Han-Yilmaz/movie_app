@@ -1,7 +1,7 @@
 import React from "react";
 // import { Link } from "react-router-dom";
 import "./moviecard.css";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const MovieCard = ({ movies, setMovies }) => {
   const navigate = useNavigate();
@@ -15,11 +15,11 @@ const MovieCard = ({ movies, setMovies }) => {
             <div
               className=" card col-xl-3 col-lg-4 col-md-6 col-cm-12"
               key={movie.id}
-              onClick={() =>
-                navigate(`${movie.id}`, {
-                  state: `https://api.themoviedb.org/3/movie/${movie.id}?api_key=12703b02c36476b0b7413bc8dc2a926e`,
-                })
-              }
+              // onClick={() =>
+              //   navigate(`${movie.id}`, {
+              //     state: `https://api.themoviedb.org/3/movie/${movie.id}?api_key=12703b02c36476b0b7413bc8dc2a926e`,
+              //   })
+              // }
             >
               <div className="div-img">
                 <img
@@ -35,7 +35,9 @@ const MovieCard = ({ movies, setMovies }) => {
                   <p>{movie.overview}</p>
                 </div> */}
                 <div className="card-body bg-warning">
-                  <h5 className="card-text">{movie.title}</h5>
+                  <Link to="detail">
+                    <h5 className="card-text">{movie.title}</h5>
+                  </Link>
                 </div>
               </div>
             </div>

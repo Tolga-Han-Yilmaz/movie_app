@@ -16,6 +16,9 @@
 .div-img {
   overflow: auto;
 }
+.div-img img {
+  cursor: pointer;
+}
 .overview {
   /* display: none; */
   position: absolute;

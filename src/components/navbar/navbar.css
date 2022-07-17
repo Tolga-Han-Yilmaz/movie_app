@@ -1,8 +1,8 @@
 .navbar {
   background-color: orange;
 }
-.btn-dark:hover {
-  background-color: red;
+.navbar .btn-dark:hover {
+  background-color: orange;
   color: black;
 }
 h3 {

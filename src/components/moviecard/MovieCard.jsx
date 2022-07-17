@@ -2,11 +2,14 @@ import React from "react";
 // import { Link } from "react-router-dom";
 import "./moviecard.css";
 import { useNavigate, Link } from "react-router-dom";
+import { useMovieContext } from "../../context/MovieContextProvider";
 
 const MovieCard = ({ movies, setMovies }) => {
   const navigate = useNavigate();
+  const { getMovies } = useMovieContext();
 
   console.log(movies);
+
   return (
     <div className="moviecard my-2">
       <div className="row">
@@ -15,11 +18,7 @@ const MovieCard = ({ movies, setMovies }) => {
             <div
               className=" card col-xl-3 col-lg-4 col-md-6 col-cm-12"
               key={movie.id}
-              // onClick={() =>
-              //   navigate(`${movie.id}`, {
-              //     state: `https://api.themoviedb.org/3/movie/${movie.id}?api_key=12703b02c36476b0b7413bc8dc2a926e`,
-              //   })
-              // }
+              onClick={() => getMovies(movie.id, navigate)}
             >
               <div className="div-img">
                 <img
@@ -35,9 +34,7 @@ const MovieCard = ({ movies, setMovies }) => {
                   <p>{movie.overview}</p>
                 </div> */}
                 <div className="card-body bg-warning">
-                  <Link to="detail">
-                    <h5 className="card-text">{movie.title}</h5>
-                  </Link>
+                  <h5 className="card-text">{movie.title}</h5>
                 </div>
               </div>
             </div>

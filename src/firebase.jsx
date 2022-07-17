@@ -5,6 +5,8 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
+  GoogleAuthProvider,
+  signInWithPopup,
 } from "firebase/auth";
 
 const firebaseConfig = {
@@ -32,5 +34,11 @@ export const login = async (email, password) => {
 export const signout = async () => {
   await signOut(auth);
   return true;
+};
+
+const provider = new GoogleAuthProvider();
+export const googleLogin = async () => {
+  const { user } = await signInWithPopup(auth, provider);
+  return user;
 };
 export default app;

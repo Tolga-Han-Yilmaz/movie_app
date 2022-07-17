@@ -9,6 +9,8 @@ export const useMovieContext = () => {
 
 const MovieContextProvider = ({ children }) => {
   const [movies, setMovies] = useState([]);
+  const [showBtn, setShowBtn] = useState(false);
+
   useEffect(() => {
     const movie = movies.map((movie) => movie);
 
@@ -19,7 +21,7 @@ const MovieContextProvider = ({ children }) => {
       .then((data) => setMovies(data));
   }, []);
 
-  const values = { movies };
+  const values = { movies, showBtn, setShowBtn };
 
   return (
     <MovieContext.Provider value={values}>{children}</MovieContext.Provider>

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { auth, register } from "../../firebase";
+import { register } from "../../firebase";
 import { useNavigate } from "react-router-dom";
 
 const Register = () => {
@@ -25,7 +25,7 @@ const Register = () => {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
-        />{" "}
+        />
         <br />
         <input
           className="my-1"
@@ -34,7 +34,7 @@ const Register = () => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
-        />{" "}
+        />
         <br />
         <button className="btn btn-primary w-100">Register</button>
       </form>

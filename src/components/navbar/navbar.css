@@ -1,5 +1,6 @@
 .navbar {
   background-color: orange;
+  height: 12vh;
 }
 .navbar .btn-dark:hover {
   background-color: orange;

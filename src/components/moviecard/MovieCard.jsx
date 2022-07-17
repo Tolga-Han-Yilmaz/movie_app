@@ -8,8 +8,6 @@ const MovieCard = ({ movies, setMovies }) => {
   const navigate = useNavigate();
   const { getMovies } = useMovieContext();
 
-  console.log(movies);
-
   return (
     <div className="moviecard my-2">
       <div className="row">

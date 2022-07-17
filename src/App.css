@@ -1,0 +1,32 @@
+.bg-movie {
+  background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.7) 50%,
+      rgba(0, 0, 0, 0.7) 100%
+    ),
+    url("../public/movie.png");
+}
+.form {
+  width: 35%;
+}
+.form input {
+  width: 50%;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: white;
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  padding: 6px 10px 6px 20px;
+  transition: width 0.4s ease-in-out;
+  margin: 1rem 0;
+}
+.form input:focus {
+  width: 100%;
+}
+
+label {
+  color: #ccc;
+  font-size: 1.3rem;
+}

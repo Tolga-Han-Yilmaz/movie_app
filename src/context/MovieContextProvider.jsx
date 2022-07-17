@@ -11,6 +11,8 @@ export const useMovieContext = () => {
 const MovieContextProvider = ({ children }) => {
   const [detailMovies, setDetailMovies] = useState([]);
   const [showBtn, setShowBtn] = useState(false);
+  const [search, setSearch] = useState([]);
+  const [showFilter, setShowFilter] = useState(false);
 
   //  details
   const getMovies = async (id, navigate) => {
@@ -26,7 +28,32 @@ const MovieContextProvider = ({ children }) => {
     }
   };
 
-  const values = { showBtn, setShowBtn, getMovies, detailMovies };
+  // search
+  //
+  const searchMovies = async (query) => {
+    try {
+      const res = await axios(
+        `https://api.themoviedb.org/3/search/movie?api_key=12703b02c36476b0b7413bc8dc2a926e&query=${query}`
+      );
+      const data = res.data.results;
+      setSearch(data);
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const values = {
+    showBtn,
+    setShowBtn,
+    getMovies,
+    detailMovies,
+    searchMovies,
+    search,
+    setSearch,
+    showFilter,
+    setShowFilter,
+  };
 
   return (
     <MovieContext.Provider value={values}>{children}</MovieContext.Provider>

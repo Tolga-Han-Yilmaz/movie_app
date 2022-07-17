@@ -25,10 +25,12 @@ const Login = () => {
   };
   return (
     <div
-      style={{ height: "100vh" }}
-      className="d-flex justify-content-center align-items-center "
+      style={{ height: "88vh" }}
+      className="d-flex justify-content-center align-items-center bg-movie"
     >
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="form text-center">
+        <label htmlFor="">E-Mail</label>
+        <br />
         <input
           type="text"
           placeholder="e-posta"
@@ -36,20 +38,21 @@ const Login = () => {
           onChange={(e) => setEmail(e.target.value)}
         />{" "}
         <br />
+        <label htmlFor="">Password</label>
+        <br />
         <input
-          className="my-1"
           type="password"
           placeholder="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
         <br />
-        <button style={{ background: "orange" }} className="btn  w-100">
+        <button style={{ background: "orange" }} className="btn my-3  w-50">
           Login
         </button>
         <br />
-        <button className="btn btn-primary w-100 my-1" onClick={handleGoogle}>
-          Google
+        <button className="btn btn-primary w-50 my-1" onClick={handleGoogle}>
+          Login with Google
         </button>
       </form>
     </div>

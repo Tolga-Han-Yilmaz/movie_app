@@ -15,10 +15,12 @@ const Register = () => {
   };
   return (
     <div
-      style={{ height: "100vh" }}
-      className="d-flex justify-content-center align-items-center "
+      style={{ height: "88vh" }}
+      className="d-flex justify-content-center align-items-center bg-movie"
     >
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="form text-center">
+        <label htmlFor="">E-Mail</label>
+        <br />
         <input
           type="text"
           placeholder="e-posta"
@@ -26,6 +28,8 @@ const Register = () => {
           onChange={(e) => setEmail(e.target.value)}
           required
         />
+        <br />
+        <label htmlFor="">Password</label>
         <br />
         <input
           className="my-1"
@@ -36,7 +40,7 @@ const Register = () => {
           required
         />
         <br />
-        <button className="btn btn-primary w-100">Register</button>
+        <button className="btn btn-primary my-3 w-50">Register</button>
       </form>
     </div>
   );

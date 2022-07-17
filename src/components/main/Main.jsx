@@ -4,9 +4,11 @@ import axios from "axios";
 import Filter from "../filter/Filter";
 import MovieCard from "../moviecard/MovieCard";
 import ReactLoading from "../loading.gif/Loading";
+import { useMovieContext } from "../../context/MovieContextProvider";
 
 // 12703b02c36476b0b7413bc8dc2a926e
 const Main = () => {
+  const { showFilter, setShowFilter } = useMovieContext();
   const [movies, setMovies] = useState([]);
   const [load, setLoad] = useState(false);
   const [query, setQuery] = useState("");
@@ -37,25 +39,13 @@ const Main = () => {
     );
   }
 
-  const searchMovie = (e) => {
-    // console.log(e.target.value);
-    setQuery({ query: e.target.value });
-  };
-  const filteredMovies = movies.filter((movie) => {
-    return movie.title.toLowerCase().indexOf(query) !== -1;
-  });
-  console.log(movies);
   return (
     <div>
       <div className="search">
-        <Filter
-          movies={movies}
-          setMovies={setMovies}
-          searchMovie={searchMovie}
-        />
+        <Filter />
       </div>
       <div className="container">
-        <MovieCard movies={filteredMovies} setMovies={setMovies} />
+        <MovieCard movies={movies} />
       </div>
     </div>
   );

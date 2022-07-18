@@ -1,11 +1,10 @@
 import { googleLogin, login } from "../../firebase";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
-import { useMovieContext } from "../../context/MovieContextProvider";
+import { FaGoogle } from "react-icons/fa";
+import { wrong } from "../../components/helper/Toasts";
 
 const Login = () => {
-  const { setShowBtn } = useMovieContext();
   const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
@@ -13,15 +12,13 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const user = await login(email, password);
+    const user = await login(email, password, wrong);
     console.log(user);
     navigate("/");
-    setShowBtn(true);
   };
   const handleGoogle = async () => {
     const user = await googleLogin();
     navigate("/");
-    setShowBtn(true);
   };
   return (
     <div
@@ -51,8 +48,14 @@ const Login = () => {
           Login
         </button>
         <br />
-        <button className="btn btn-primary w-50 my-1" onClick={handleGoogle}>
-          Login with Google
+        <button
+          type="submit"
+          className="btn btn-primary w-50 my-1"
+          onClick={handleGoogle}
+        >
+          <FaGoogle /> OO
+          <FaGoogle />
+          LE
         </button>
       </form>
     </div>

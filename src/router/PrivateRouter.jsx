@@ -2,9 +2,9 @@ import { Navigate, Outlet } from "react-router-dom";
 import { useMovieContext } from "../context/MovieContextProvider";
 
 const PrivateRouter = () => {
-  const { showBtn } = useMovieContext();
+  const { showBtn, currentUser } = useMovieContext();
 
-  return showBtn ? <Outlet /> : <Navigate to="/login" />;
+  return currentUser ? <Outlet /> : <Navigate to="/login" />;
 };
 
 export default PrivateRouter;

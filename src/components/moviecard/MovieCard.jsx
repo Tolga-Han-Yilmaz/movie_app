@@ -1,12 +1,11 @@
 import React from "react";
-// import { Link } from "react-router-dom";
 import "./moviecard.css";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useMovieContext } from "../../context/MovieContextProvider";
 
 const MovieCard = ({ movies, setMovies }) => {
   const navigate = useNavigate();
-  const { getMovies } = useMovieContext();
+  const { getMovies, currentUser } = useMovieContext();
 
   return (
     <div className="moviecard my-2">

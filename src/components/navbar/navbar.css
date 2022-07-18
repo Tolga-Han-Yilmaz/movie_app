@@ -9,3 +9,9 @@
 h3 {
   cursor: pointer;
 }
+.falist {
+  /* display: block; */
+  background-color: orange;
+  border: none;
+  font-size: 2rem;
+}

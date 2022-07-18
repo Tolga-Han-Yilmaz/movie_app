@@ -13,10 +13,11 @@ const MovieDetail = () => {
           <div className="col-md-4">
             <a href={detailMovies.homepage} target="_blank">
               <img
-                src={
-                  `https://www.themoviedb.org/t/p/w600_and_h900_bestv2/` +
-                  detailMovies.poster_path
-                }
+                src={`https://www.themoviedb.org/t/p/w600_and_h900_bestv2/${
+                  detailMovies.poster_path !== null
+                    ? detailMovies.poster_path
+                    : "yHA9Fc37VmpUA5UncTxxo3rTGVA.jpg"
+                }`}
                 className="img-fluid rounded-start"
                 alt="..."
               />
@@ -37,7 +38,7 @@ const MovieDetail = () => {
                   {!read ? "readmore..." : "readless"}
                 </span>
               </p>
-              <p className="card-text">
+              {/* <p className="card-text">
                 <small className="text-muted">
                   <img
                     style={{ width: "100px" }}
@@ -48,7 +49,7 @@ const MovieDetail = () => {
                     alt=""
                   />
                 </small>
-              </p>
+              </p> */}
             </div>
           </div>
         </div>

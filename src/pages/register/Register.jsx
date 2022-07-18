@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { register } from "../../firebase";
 import { useNavigate } from "react-router-dom";
+import { deneme } from "../../components/helper/Toasts";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -9,9 +10,8 @@ const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const user = await register(email, password);
+    const user = await register(email, password, deneme, navigate);
     console.log(user);
-    navigate("/login");
   };
   return (
     <div

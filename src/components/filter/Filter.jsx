@@ -54,10 +54,11 @@ const Filter = () => {
                 <div className="div-img">
                   <img
                     className="card-img-top"
-                    src={
-                      `https://www.themoviedb.org/t/p/w600_and_h900_bestv2/` +
-                      movie.poster_path
-                    }
+                    src={`https://www.themoviedb.org/t/p/w600_and_h900_bestv2/${
+                      movie.poster_path !== null
+                        ? movie.poster_path
+                        : "yHA9Fc37VmpUA5UncTxxo3rTGVA.jpg"
+                    }`}
                     alt={movie.title}
                   />
                   {/* <div className="overview">

@@ -2,9 +2,10 @@ import { useNavigate } from "react-router-dom";
 import "./navbar.css";
 import { useMovieContext } from "../../context/MovieContextProvider";
 import { signout } from "../../firebase";
+import { BiMenu } from "react-icons/bi";
 
 const Navbar = () => {
-  const { showBtn, setShowBtn } = useMovieContext();
+  const { showBtn, setShowBtn, currentUser } = useMovieContext();
 
   const navigate = useNavigate();
 
@@ -20,16 +21,15 @@ const Navbar = () => {
   const handleLogout = async () => {
     await signout();
     navigate("/login");
-    setShowBtn(false);
   };
   return (
     <nav className="navbar   d-flex justify-content-between p-3 navbar">
       <div className="container">
         <div>
-          <h3 onClick={handleClick}>React Movie App</h3>
+          <h3 onClick={handleClick}>Movies</h3>
         </div>
         <div>
-          {!showBtn ? (
+          {!currentUser ? (
             <div>
               <button className="btn btn-dark mx-3" onClick={handleLogin}>
                 Login

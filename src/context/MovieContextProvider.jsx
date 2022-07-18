@@ -1,6 +1,7 @@
 import { createContext, useContext } from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { mevcutKullanici } from "../firebase";
 
 export const MovieContext = createContext();
 
@@ -13,6 +14,12 @@ const MovieContextProvider = ({ children }) => {
   const [showBtn, setShowBtn] = useState(false);
   const [search, setSearch] = useState([]);
   const [showFilter, setShowFilter] = useState(false);
+  const [currentUser, setCurrentUser] = useState("");
+
+  useEffect(() => {
+    mevcutKullanici(setCurrentUser);
+  }, []);
+  console.log(currentUser);
 
   //  details
   const getMovies = async (id, navigate) => {
@@ -53,6 +60,8 @@ const MovieContextProvider = ({ children }) => {
     setSearch,
     showFilter,
     setShowFilter,
+    currentUser,
+    setCurrentUser,
   };
 
   return (

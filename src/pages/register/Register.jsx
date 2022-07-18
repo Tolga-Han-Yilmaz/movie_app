@@ -22,7 +22,7 @@ const Register = () => {
         <label htmlFor="">E-Mail</label>
         <br />
         <input
-          type="text"
+          type="email"
           placeholder="e-posta"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
@@ -40,7 +40,12 @@ const Register = () => {
           required
         />
         <br />
-        <button className="btn btn-primary my-3 w-50">Register</button>
+        <button
+          disabled={!email || !password}
+          className="btn btn-primary my-3 w-50"
+        >
+          Register
+        </button>
       </form>
     </div>
   );

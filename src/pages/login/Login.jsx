@@ -30,7 +30,7 @@ const Login = () => {
         <label htmlFor="">E-Mail</label>
         <br />
         <input
-          type="text"
+          type="email"
           placeholder="e-posta"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
@@ -45,7 +45,11 @@ const Login = () => {
           onChange={(e) => setPassword(e.target.value)}
         />
         <br />
-        <button style={{ background: "orange" }} className="btn my-3  w-50">
+        <button
+          disabled={!email || !password}
+          style={{ background: "orange" }}
+          className="btn my-3  w-50"
+        >
           Login
         </button>
         <br />

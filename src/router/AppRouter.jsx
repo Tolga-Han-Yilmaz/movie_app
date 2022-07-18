@@ -7,6 +7,7 @@ import MovieDetail from "../pages/moviedetail/MovieDetail";
 import Register from "../pages/register/Register";
 import PrivateRouter from "./PrivateRouter";
 import { useMovieContext } from "../context/MovieContextProvider";
+import NotFound from "../pages/notfound/NotFound";
 
 const AppRouter = () => {
   const { detailMovies } = useMovieContext();
@@ -20,6 +21,7 @@ const AppRouter = () => {
         <Route path={"/" + detailMovies.id} element={<PrivateRouter />}>
           <Route path="" element={<MovieDetail />} />
         </Route>
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </>
   );

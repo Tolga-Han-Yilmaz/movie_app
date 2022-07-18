@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import "./filter.css";
 import { useMovieContext } from "../../context/MovieContextProvider";
 import { useNavigate } from "react-router-dom";
 

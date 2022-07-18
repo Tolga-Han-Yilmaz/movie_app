@@ -2,10 +2,9 @@ import { useNavigate } from "react-router-dom";
 import "./navbar.css";
 import { useMovieContext } from "../../context/MovieContextProvider";
 import { signout } from "../../firebase";
-import { BiMenu } from "react-icons/bi";
 
 const Navbar = () => {
-  const { showBtn, setShowBtn, currentUser } = useMovieContext();
+  const { currentUser } = useMovieContext();
 
   const navigate = useNavigate();
 

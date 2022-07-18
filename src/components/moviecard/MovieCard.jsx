@@ -3,9 +3,9 @@ import "./moviecard.css";
 import { useNavigate } from "react-router-dom";
 import { useMovieContext } from "../../context/MovieContextProvider";
 
-const MovieCard = ({ movies, setMovies }) => {
+const MovieCard = ({ movies }) => {
   const navigate = useNavigate();
-  const { getMovies, currentUser } = useMovieContext();
+  const { getMovies } = useMovieContext();
 
   return (
     <div className="moviecard my-2">

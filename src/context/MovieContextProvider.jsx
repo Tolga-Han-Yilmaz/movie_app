@@ -1,7 +1,7 @@
 import { createContext, useContext } from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { mevcutKullanici } from "../firebase";
+import { userCurrent } from "../firebase";
 
 export const MovieContext = createContext();
 
@@ -11,21 +11,19 @@ export const useMovieContext = () => {
 
 const MovieContextProvider = ({ children }) => {
   const [detailMovies, setDetailMovies] = useState([]);
-  const [showBtn, setShowBtn] = useState(false);
   const [search, setSearch] = useState([]);
   const [showFilter, setShowFilter] = useState(false);
   const [currentUser, setCurrentUser] = useState("");
 
   useEffect(() => {
-    mevcutKullanici(setCurrentUser);
+    userCurrent(setCurrentUser);
   }, []);
-  console.log(currentUser);
 
   //  details
   const getMovies = async (id, navigate) => {
     try {
       const res = await axios(
-        `https://api.themoviedb.org/3/movie/${id}?api_key=12703b02c36476b0b7413bc8dc2a926e`
+        `https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.REACT_APP_MOVIE_API_KEY}`
       );
       const data = res.data;
       setDetailMovies(data);
@@ -36,23 +34,19 @@ const MovieContextProvider = ({ children }) => {
   };
 
   // search
-  //
   const searchMovies = async (query) => {
     try {
       const res = await axios(
-        `https://api.themoviedb.org/3/search/movie?api_key=12703b02c36476b0b7413bc8dc2a926e&query=${query}`
+        `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_MOVIE_API_KEY}&query=${query}`
       );
       const data = res.data.results;
       setSearch(data);
-      console.log(data);
     } catch (error) {
       console.log(error);
     }
   };
 
   const values = {
-    showBtn,
-    setShowBtn,
     getMovies,
     detailMovies,
     searchMovies,

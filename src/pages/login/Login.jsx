@@ -2,7 +2,7 @@ import { googleLogin, login } from "../../firebase";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaGoogle } from "react-icons/fa";
-import { wrong } from "../../components/helper/Toasts";
+import { wrong, success } from "../../components/helper/Toasts";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -12,18 +12,19 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const user = await login(email, password, wrong);
+    const user = await login(email, password, wrong, success, navigate);
     console.log(user);
-    navigate("/");
   };
-  const handleGoogle = async () => {
-    const user = await googleLogin();
-    navigate("/");
+  const handleGoogle = async (e) => {
+    e.preventDefault();
+
+    // eslint-disable-next-line no-unused-vars
+    const user = await googleLogin(success, navigate);
   };
   return (
     <div
       style={{ height: "88vh" }}
-      className="d-flex justify-content-center align-items-center bg-movie"
+      className="d-flex justify-content-center flex-column align-items-center bg-movie"
     >
       <form onSubmit={handleSubmit} className="form text-center">
         <label htmlFor="">E-Mail</label>
@@ -48,11 +49,9 @@ const Login = () => {
           Login
         </button>
         <br />
-        <button
-          type="submit"
-          className="btn btn-primary w-50 my-1"
-          onClick={handleGoogle}
-        >
+      </form>
+      <form onSubmit={handleGoogle} className="form text-center">
+        <button type="submit" className="btn btn-primary w-50 my-1">
           <FaGoogle /> OO
           <FaGoogle />
           LE

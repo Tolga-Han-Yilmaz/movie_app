@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-target-blank */
 import { useState } from "react";
 import { useMovieContext } from "../../context/MovieContextProvider";
 import "./moviedetail.css";
@@ -5,7 +6,6 @@ import "./moviedetail.css";
 const MovieDetail = () => {
   const { detailMovies } = useMovieContext();
   const [read, setRead] = useState(false);
-  console.log(detailMovies);
   return (
     <div className=" p-5 bg-warning">
       <div className="card mb-3">
@@ -38,18 +38,6 @@ const MovieDetail = () => {
                   {!read ? "readmore..." : "readless"}
                 </span>
               </p>
-              {/* <p className="card-text">
-                <small className="text-muted">
-                  <img
-                    style={{ width: "100px" }}
-                    src={
-                      `https://www.themoviedb.org/t/p/w600_and_h900_bestv2/` +
-                      detailMovies.production_companies[0].logo_path
-                    }
-                    alt=""
-                  />
-                </small>
-              </p> */}
             </div>
           </div>
         </div>

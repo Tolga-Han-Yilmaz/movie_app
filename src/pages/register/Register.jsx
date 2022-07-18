@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { register } from "../../firebase";
 import { useNavigate } from "react-router-dom";
-import { deneme } from "../../components/helper/Toasts";
+import { wrong, success } from "../../components/helper/Toasts";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -10,7 +10,7 @@ const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const user = await register(email, password, deneme, navigate);
+    const user = await register(email, password, navigate, wrong, success);
     console.log(user);
   };
   return (
@@ -34,7 +34,7 @@ const Register = () => {
         <input
           className="my-1"
           type="password"
-          placeholder="password"
+          placeholder="XXXXXX"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required

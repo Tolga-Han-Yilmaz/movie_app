@@ -23,57 +23,53 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth();
 
 // register
-export const register = (email, password, deneme, navigate) => {
+export const register = (email, password, navigate, wrong, success) => {
   createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
-      deneme("Kullanıcı oluşturuldu!");
+      success("user created");
       navigate("/");
     })
     .catch((error) => {
       console.log(error);
-      deneme(`${error}`);
+      wrong(`please check your information`);
       navigate("/register");
     });
 };
 
 // login
-export const login = async (email, password, deneme) => {
+export const login = async (email, password, wrong, success, navigate) => {
   try {
     const { user } = await signInWithEmailAndPassword(auth, email, password);
-    await deneme("baarılı");
+    await success("You have successfully logged in.");
+    navigate("/");
     return user;
-  } catch (error) {}
+  } catch (error) {
+    console.log(error);
+    await wrong("please check your information");
+  }
 };
 
 // signout
 export const signout = async () => {
   await signOut(auth);
+
   return true;
 };
 
 // google login
-// const provider = new GoogleAuthProvider();
-// export const googleLogin = async () => {
-//   try {
-//     const { user } = await signInWithPopup(auth, provider);
-//     return user;
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
-
-export const googleLogin = () => {
-  const provider = new GoogleAuthProvider();
+const provider = new GoogleAuthProvider();
+export const googleLogin = (success, navigate) => {
   signInWithPopup(auth, provider)
     .then((result) => {
-      console.log(result);
+      success("You have successfully logged in.");
+      navigate("/");
     })
     .catch((error) => {
       console.log(error);
     });
 };
 
-export const mevcutKullanici = (setCurrentUser) => {
+export const userCurrent = (setCurrentUser) => {
   onAuthStateChanged(auth, (currentUser) => {
     if (currentUser) {
       setCurrentUser(currentUser);

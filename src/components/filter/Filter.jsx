@@ -1,19 +1,12 @@
-import { useEffect, useState } from "react";
-import "./filter.css";
+import { useState } from "react";
+
 import { useMovieContext } from "../../context/MovieContextProvider";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Filter = () => {
   const navigate = useNavigate();
 
-  const {
-    searchMovies,
-    search,
-    setSearch,
-    showFilter,
-    setShowFilter,
-    getMovies,
-  } = useMovieContext();
+  const { searchMovies, search, setShowFilter, getMovies } = useMovieContext();
   const [query, setQuery] = useState("");
   const searchHandle = (e) => {
     setQuery(e.target.value);
@@ -21,11 +14,9 @@ const Filter = () => {
   const handleFilter = (e) => {
     e.preventDefault();
     searchMovies(query);
-    console.log(query);
     setShowFilter(true);
   };
-  // searchMovies(query);
-  console.log(search);
+
   return (
     <div>
       <div className="d-flex justify-content-center filter">

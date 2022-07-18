@@ -4,16 +4,12 @@ import axios from "axios";
 import Filter from "../filter/Filter";
 import MovieCard from "../moviecard/MovieCard";
 import ReactLoading from "../loading.gif/Loading";
-import { useMovieContext } from "../../context/MovieContextProvider";
 
-// 12703b02c36476b0b7413bc8dc2a926e
 const Main = () => {
-  const { showFilter, setShowFilter } = useMovieContext();
   const [movies, setMovies] = useState([]);
   const [load, setLoad] = useState(false);
-  const [query, setQuery] = useState("");
-  const url =
-    "https://api.themoviedb.org/3/discover/movie?api_key=12703b02c36476b0b7413bc8dc2a926e";
+
+  const url = `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_MOVIE_API_KEY}`;
 
   const getResponse = async () => {
     try {
@@ -29,12 +25,12 @@ const Main = () => {
   useEffect(() => {
     getResponse();
     setLoad(true);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   if (!load) {
     return (
       <div>
         <ReactLoading type="spin" color="black" />
-        {/* <h1>Loading...</h1> */}
       </div>
     );
   }

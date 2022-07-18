@@ -2,7 +2,8 @@ import { Navigate, Outlet } from "react-router-dom";
 import { useMovieContext } from "../context/MovieContextProvider";
 
 const PrivateRouter = () => {
-  const { showBtn, currentUser } = useMovieContext();
+  // eslint-disable-next-line no-unused-vars
+  const { currentUser } = useMovieContext();
 
   return currentUser ? <Outlet /> : <Navigate to="/login" />;
 };

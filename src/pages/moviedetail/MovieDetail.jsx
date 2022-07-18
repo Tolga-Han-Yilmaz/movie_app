@@ -7,7 +7,7 @@ const MovieDetail = () => {
   const { detailMovies } = useMovieContext();
   const [read, setRead] = useState(false);
   return (
-    <div className=" p-5 bg-warning">
+    <div className="moviedetail p-5 bg-warning">
       <div className="card mb-3">
         <div className="row g-0">
           <div className="col-md-4">

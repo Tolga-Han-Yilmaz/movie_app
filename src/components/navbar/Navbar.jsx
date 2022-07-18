@@ -22,7 +22,7 @@ const Navbar = () => {
     navigate("/login");
   };
   return (
-    <nav className="navbar   d-flex justify-content-between p-3 navbar mb-3">
+    <nav className="navbar   d-flex justify-content-between p-3 navbar">
       <div className="container">
         <div>
           <h3 onClick={handleClick}>Movies</h3>
